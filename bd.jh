@@ -1,0 +1,89 @@
+entity Service{
+	NomService String,
+	Responsable String,
+	tel String,
+	mail String
+}
+entity GroupeMail{
+	Nom_groupe String,
+	mail String
+}
+
+entity Tmc{
+	Nom String,
+	Prenom String,
+	tel String,
+	mail String
+}
+
+entity Application{
+	NomApp String
+	
+}
+entity Consigne{
+	motcle String,
+	libelle String,
+	description TextBlob,
+	consigne_HO TextBlob,
+	consigne_HNO TextBlob
+}
+
+entity Avis{
+	code String,
+	Libelle String,
+	Date LocalDate,
+	objet TextBlob,
+	date_debut Instant,
+	date_previsionnelle Instant,
+	service_impactes TextBlob,
+	impact TextBlob,
+	cause_probables TextBlob,
+	origine_remontee TextBlob,
+	avancement TextBlob,
+	observation TextBlob
+}
+entity ListeDiffusion{
+	liste_contact String
+}
+
+
+relationship OneToMany{
+	Service{application} to Application
+}
+relationship OneToMany{
+	GroupeMail{application} to Application
+}
+
+relationship OneToMany{
+	Service{tmc} to Tmc
+}
+
+relationship OneToMany{
+	GroupeMail{tmc} to Tmc
+}
+
+relationship ManyToOne{
+	Consigne{application} to Consigne
+}
+
+relationship ManyToOne{
+	Consigne{service} to Consigne
+}
+relationship ManyToOne{
+	Consigne{tmc} to Consigne
+}
+
+relationship ManyToOne{
+	ListeDiffusion{application} to Application
+}
+
+
+relationship OneToMany{
+	ListeDiffusion{avis} to Avis
+}
+
+
+
+
+
+
