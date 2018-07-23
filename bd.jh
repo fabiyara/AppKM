@@ -29,8 +29,8 @@ entity Consigne{
 }
 
 entity Avis{
-	code String,
-	Libelle String,
+	reference String,
+	Titre_avis String,
 	Date LocalDate,
 	objet TextBlob,
 	date_debut Instant,
@@ -82,6 +82,7 @@ relationship OneToMany{
 	ListeDiffusion{avis} to Avis
 }
 
+paginate Application with pagination
 
 
 
